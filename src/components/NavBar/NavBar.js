@@ -6,10 +6,6 @@ import {
     Nav,
     NavItem,
     NavLink,
-    Dropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
     InputGroup,
     InputGroupAddon,
     InputGroupText,
@@ -17,6 +13,7 @@ import {
     Collapse,
     Container
 } from "shards-react";
+import { CategoriesDropdown } from './CategoriesDropdown';
 
 export default class NavBar extends Component {
 
@@ -52,21 +49,11 @@ export default class NavBar extends Component {
 
                     <Collapse open={collapseOpen} navbar>
                         <Nav navbar>
-                            <Dropdown
-                                open={dropdownOpen}
-                                toggle={this.toggleDropdown}
-                            >
-                                <DropdownToggle nav caret>
-                                    Menu
-                            </DropdownToggle>
-                                <DropdownMenu>
-                                    {
-                                        menuCategories.map(category => (
-                                            <DropdownItem>{category.name}</DropdownItem>
-                                        ))
-                                    }
-                                </DropdownMenu>
-                            </Dropdown>
+                            <CategoriesDropdown
+                                dropdownOpen={dropdownOpen}
+                                menuCategories={menuCategories}
+                                toggleDropdown={this.toggleDropdown}
+                            />
                             <NavItem>
                                 <NavLink href="#">
                                     Events
